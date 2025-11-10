@@ -12,3 +12,11 @@ def classificar_lados(a, b, c):
     else:
         return "As medidas não formam um triângulo válido."
     
+def calcular_area(lado1, lado2, lado3):
+    semiperimetro = (lado1 + lado2 + lado3) / 2
+    area = (semiperimetro * (semiperimetro - lado1) * (semiperimetro - lado2) * (semiperimetro - lado3)) ** 0.5
+    return area
+
+def calcular_perimetro(lado1, lado2, lado3):
+    perimetro = lado1 + lado2 + lado3
+    return perimetro

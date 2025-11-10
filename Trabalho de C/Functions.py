@@ -1,0 +1,14 @@
+def classificar_lados(a, b, c):
+    if a <= 0 or b <= 0 or c <= 0:
+        return "Os lados devem ser maiores que zero."
+    if (a < b + c) and (b < a + c) and (c < a + b):
+        # Classificação
+        if a == b == c:
+            return "Triângulo equilátero"
+        elif a == b or b == c or a == c:
+            return "Triângulo isósceles"
+        else:
+            return "Triângulo escaleno"
+    else:
+        return "As medidas não formam um triângulo válido."
+    

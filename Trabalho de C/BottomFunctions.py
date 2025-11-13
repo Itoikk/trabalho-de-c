@@ -26,3 +26,7 @@ def area(entry1, entry2, entry3, target_frame):
         lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 13))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
 
+def limpar(frame_target):
+    for widget in frame_target.winfo_children():
+        widget.destroy()
+

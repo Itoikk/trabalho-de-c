@@ -37,7 +37,7 @@ class Aplications():
         self.bt_peri=Button(self.frame_2, text="Calcular Perímetro", command=lambda: BottomFunctions.per(self.dad1, self.dad2, self.dad3, self.frame_1))
         self.bt_peri.place(relx=0.40, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão limpar
-        self.bt_clear=Button(self.frame_2, text="Limpar")
+        self.bt_clear=Button(self.frame_2, text="Limpar", command=lambda: BottomFunctions.limpar(self.frame_2))
         self.bt_clear.place(relx=0.00, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão criar triângulo
         self.bt_create=Button(self.frame_2, text="Criar Triângulo")

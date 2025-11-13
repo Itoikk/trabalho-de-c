@@ -36,3 +36,15 @@ def limpar(frame_target):
     for widget in frame_target.winfo_children():
         widget.destroy()
 
+def classificar_triangulo(entry1, entry2, entry3, target_frame):
+    try:
+        a = float(entry1.get())
+        b = float(entry2.get())
+        c = float(entry3.get())
+        classificacao = classificar_lados(a, b, c)
+        lbl = Label(target_frame, text=f"Classificação: {classificacao}", fg="black", bg="white", font=("Arial", 13))
+        lbl.place(relx=0.5, rely=0.5, anchor='center')
+    except ValueError:
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 13))
+        lbl.place(relx=0.5, rely=0.5, anchor='center')
+

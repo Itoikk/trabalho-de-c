@@ -11,19 +11,8 @@ class Aplications():
         self.frames()
         self.botões()
         self.labels()
-        self.func()
         janela.mainloop()
-    def func(self):
-        try:
-            self.a=float(self.dad1.get())
-            self.b=float(self.dad2.get())
-            self.c=float(self.dad3.get())
-            
-            self.lbl = Label(self.frame_1, text=f"Perímetro: {calcular_perimetro(self.a, self.b, self.c)}", 
-                             fg="black", bg="white", font=("Arial", 13))
-            self.lbl.place(relx=0.5, rely=0.5, anchor='center')
-        except:
-            return ValueError
+
     def tela(self):
         self.janela.title("Triângulos")
         self.janela.configure(background="lightblue")
@@ -47,7 +36,7 @@ class Aplications():
         self.bt_area=Button(self.frame_2, text="Calcular Área")
         self.bt_area.place(relx=0.60, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão perímetro
-        self.bt_peri=Button(self.frame_2, text="Calcular Perímetro", command=self.func)
+        self.bt_peri=Button(self.frame_2, text="Calcular Perímetro", command=lambda: per(self.dad1, self.dad2, self.dad3, self.frame_1))
         self.bt_peri.place(relx=0.40, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão limpar
         self.bt_clear=Button(self.frame_2, text="Limpar")

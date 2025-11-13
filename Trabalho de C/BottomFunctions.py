@@ -8,9 +8,12 @@ def per(entry1, entry2, entry3, target_frame):
         c = float(entry3.get())
         perim = calcular_perimetro(a, b, c)
         lbl = Label(target_frame, text=f"Perímetro: {perim}", fg="black", bg="white", font=("Arial", 13))
-        lbl.place(relx=0.5, rely=0.5, anchor='center')
+        lbl.place(relx=0.1, rely=0.2, anchor='w')
     except ValueError:
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 13))
+        for widget in target_frame.winfo_children():
+            widget.destroy()
+
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
 
 def area(entry1, entry2, entry3, target_frame):
@@ -21,9 +24,12 @@ def area(entry1, entry2, entry3, target_frame):
         area=calcular_area(a, b, c)
         lbl = Label(target_frame, text=f"Área: {area}", fg="black",
                     bg="white", font=("Arial", 13))
-        lbl.place(relx=0.5, rely=0.5, anchor='center')
+        lbl.place(relx=0.1, rely=0.1, anchor='w')
     except ValueError:
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 13))
+        for widget in target_frame.winfo_children():
+            widget.destroy()
+
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
 
 def limpar(frame_target):

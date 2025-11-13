@@ -9,6 +9,7 @@ class Aplications():
         self.frames()
         self.botões()
         self.labels()
+        self.canva()
         self.janela.mainloop()
 
     def tela(self):
@@ -37,10 +38,10 @@ class Aplications():
         self.bt_peri=Button(self.frame_2, text="Calcular Perímetro", command=lambda: BottomFunctions.per(self.dad1, self.dad2, self.dad3, self.frame_1))
         self.bt_peri.place(relx=0.40, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão limpar
-        self.bt_clear=Button(self.frame_2, text="Limpar", command=lambda: BottomFunctions.limpar(self.frame_1))
+        self.bt_clear=Button(self.frame_2, text="Limpar", command=lambda: BottomFunctions.limpar(self.frame_1, self.canvas))
         self.bt_clear.place(relx=0.00, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão criar triângulo
-        self.bt_create=Button(self.frame_2, text="Criar Triângulo")
+        self.bt_create=Button(self.frame_2, text="Criar Triângulo", command=lambda: BottomFunctions.desenhar_triangulo(self.dad1, self.dad2, self.dad3, self.canvas, self.frame_1))
         self.bt_create.place(relx=0.80, rely=0.8, relwidth=0.2, relheight=0.15)
     
     def labels(self):
@@ -54,6 +55,10 @@ class Aplications():
         self.dad2.place(relx=0.4, rely=0.3, relwidth=0.2, relheight=0.1)
         self.dad3=Entry(self.frame_2)
         self.dad3.place(relx=0.4, rely=0.45, relwidth=0.2, relheight=0.1)
+    
+    def canva(self):
+        self.canvas=Canvas(self.frame_1, bg="white", highlightbackground="gray", highlightthickness=3,)
+        self.canvas.place(relx=0.3, rely=0.0, relwidth=0.7, relheight=1)
 
 
 if __name__ == "__main__":

@@ -1,17 +1,15 @@
 from Functions import *
-from BottomFunctions import *
+import BottomFunctions
 from tkinter import *
-
-janela= Tk()
 
 class Aplications():
     def __init__(self):
-        self.janela=janela
+        self.janela = Tk()
         self.tela()
         self.frames()
         self.botões()
         self.labels()
-        janela.mainloop()
+        self.janela.mainloop()
 
     def tela(self):
         self.janela.title("Triângulos")
@@ -33,10 +31,10 @@ class Aplications():
 
 
         #Criação botão calcular área
-        self.bt_area=Button(self.frame_2, text="Calcular Área")
+        self.bt_area=Button(self.frame_2, text="Calcular Área", command=lambda: BottomFunctions.area(self.dad1, self.dad2, self.dad3, self.frame_1))
         self.bt_area.place(relx=0.60, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão perímetro
-        self.bt_peri=Button(self.frame_2, text="Calcular Perímetro", command=lambda: per(self.dad1, self.dad2, self.dad3, self.frame_1))
+        self.bt_peri=Button(self.frame_2, text="Calcular Perímetro", command=lambda: BottomFunctions.per(self.dad1, self.dad2, self.dad3, self.frame_1))
         self.bt_peri.place(relx=0.40, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão limpar
         self.bt_clear=Button(self.frame_2, text="Limpar")
@@ -58,5 +56,6 @@ class Aplications():
         self.dad3.place(relx=0.4, rely=0.45, relwidth=0.2, relheight=0.1)
 
 
-Aplications()
+if __name__ == "__main__":
+    Aplications()
 

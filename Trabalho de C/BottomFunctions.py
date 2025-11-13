@@ -42,9 +42,9 @@ def classificar_triangulo(entry1, entry2, entry3, target_frame):
         b = float(entry2.get())
         c = float(entry3.get())
         classificacao = classificar_lados(a, b, c)
-        lbl = Label(target_frame, text=f"Classificação: {classificacao}", fg="black", bg="white", font=("Arial", 13))
-        lbl.place(relx=0.5, rely=0.5, anchor='center')
+        lbl = Label(target_frame, text=f"Classificação: {classificacao}", fg="black", bg="white", font=("Arial", 10))
+        lbl.place(relx=0.1, rely=0.3, anchor='w')
     except ValueError:
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 13))
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
 

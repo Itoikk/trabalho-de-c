@@ -26,7 +26,7 @@ class Aplications():
         self.frame_2.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
     def botões(self):
         #Criação botão classificar triângulo
-        self.bt_class=Button(self.frame_2, text="Classificar Triângulo")
+        self.bt_class=Button(self.frame_2, text="Classificar Triângulo", command = lambda: BottomFunctions.classificar_triangulo(self.dad1, self.dad2, self.dad3, self.frame_1))
         self.bt_class.place(relx=0.20, rely=0.8, relwidth=0.2, relheight=0.15)
 
 

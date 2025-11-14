@@ -44,6 +44,9 @@ def classificar_triangulo(entry1, entry2, entry3, target_frame):
         b = float(entry2.get())
         c = float(entry3.get()) 
         classificacao = classificar_lados(a, b, c)
+        for widget in target_frame.winfo_children():
+            if isinstance(widget, Label):
+                widget.destroy()
         lbl = Label(target_frame, text=f"Classificação: {classificacao}", fg="black", bg="white", font=("Arial", 13))
         lbl.place(relx=0.1, rely=0.3, anchor='w')
     except ValueError:
@@ -62,7 +65,7 @@ def desenhar_triangulo(entry1, entry2, entry3, canvas, frame_target):
         x_c = (b**2 - c**2 + a**2) / (2 * a)
         y_c = h
         max_dim = max(a, b, c, h)
-        escala = 210 / max_dim
+        escala = 300 / max_dim
         x1, y1 = 50, 300
         x2, y2 = x1 + a * escala, 300
         x3, y3 = x1 + x_c * escala, 300 - y_c * escala
@@ -80,6 +83,7 @@ def desenhar_triangulo(entry1, entry2, entry3, canvas, frame_target):
         y3 += dy
 
         canvas.create_polygon(x1, y1, x2, y2, x3, y3, fill="lightblue", outline="black", width=2)
+        canvas.create_line(x3, y3, x3, y1, fill="black", width=2)
     except ValueError:
         lbl = Label(frame_target, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')

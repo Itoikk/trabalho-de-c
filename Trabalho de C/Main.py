@@ -20,11 +20,19 @@ class Aplications():
         self.frame_1=Frame(
             self.janela, bd=4, bg="white",
             highlightbackground="gray", highlightthickness=3)
-        self.frame_1.place(relx=0.02, rely=0.02, relwidth=0.96, relheight=0.46)
+        self.frame_1.place(relx=0.02, rely=0.02, relwidth=0.34, relheight=0.46)
+
+
         self.frame_2=Frame(
             self.janela, bd=4, bg="lightgray",
             highlightbackground="gray", highlightthickness=3)
         self.frame_2.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
+
+
+        self.frame_3=Frame(
+            self.janela, bd=4, bg="white",
+            highlightbackground="gray", highlightthickness=3)
+        self.frame_3.place(relx=0.37, rely=0.02, relwidth=0.61, relheight=0.46)
     def botões(self):
         #Criação botão classificar triângulo
         self.bt_class=Button(self.frame_2, text="Classificar Triângulo", command = lambda: BottomFunctions.classificar_triangulo(self.dad1, self.dad2, self.dad3, self.frame_1))
@@ -57,8 +65,8 @@ class Aplications():
         self.dad3.place(relx=0.4, rely=0.45, relwidth=0.2, relheight=0.1)
     
     def canva(self):
-        self.canvas=Canvas(self.frame_1, bg="white", highlightbackground="gray", highlightthickness=3,)
-        self.canvas.place(relx=0.3, rely=0.0, relwidth=0.7, relheight=1)
+        self.canvas=Canvas(self.frame_3, bg="white", highlightthickness=0)
+        self.canvas.place(relx=0.0, rely=0.0, relwidth=1, relheight=1)
 
 
 if __name__ == "__main__":

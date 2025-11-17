@@ -45,7 +45,7 @@ def classificar_triangulo(entry1, entry2, entry3, target_frame):
         c = float(entry3.get()) 
         classificacao = classificar_lados(a, b, c)
         for widget in target_frame.winfo_children():
-            if isinstance(widget, Label):
+            if not isinstance(widget, Label):
                 widget.destroy()
         lbl = Label(target_frame, text=f"Classificação: {classificacao}", fg="black", bg="white", font=("Arial", 13))
         lbl.place(relx=0.1, rely=0.3, anchor='w')

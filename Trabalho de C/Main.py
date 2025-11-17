@@ -54,15 +54,30 @@ class Aplications():
     
     def labels(self):
         self.lbl_insdados=Label(self.frame_2, text="Insira as medidas do triângulo",
-                                fg="black", bg="lightgray", font=("Arial", 11))
+                                fg="black", bg="lightgray", font=("Verdana", 12+1))
         self.lbl_insdados.place(relx=0.35, rely=0.02, relwidth=0.3, relheight=0.1)
 
+        self.lbl_lados=Label(self.frame_2, text="Lados:",
+                                fg="black", bg="lightgray", font=("Verdana", 12))
+        self.lbl_lados.place(relx=0.225, rely=0.125, relwidth=0.3, relheight=0.1)
+        self.lbl_angulos=Label(self.frame_2, text="Ângulos:",
+                                fg="black", bg="lightgray", font=("Verdana", 12))
+        self.lbl_angulos.place(relx=0.475, rely=0.125, relwidth=0.3, relheight=0.1)
+
+
         self.dad1=Entry(self.frame_2)
-        self.dad1.place(relx=0.4, rely=0.15, relwidth=0.2, relheight=0.1)
+        self.dad1.place(relx=0.275, rely=0.225, relwidth=0.2, relheight=0.1)
         self.dad2=Entry(self.frame_2)
-        self.dad2.place(relx=0.4, rely=0.3, relwidth=0.2, relheight=0.1)
+        self.dad2.place(relx=0.275, rely=0.375, relwidth=0.2, relheight=0.1)
         self.dad3=Entry(self.frame_2)
-        self.dad3.place(relx=0.4, rely=0.45, relwidth=0.2, relheight=0.1)
+        self.dad3.place(relx=0.275, rely=0.525, relwidth=0.2, relheight=0.1)
+
+        self.ang1=Entry(self.frame_2)
+        self.ang1.place(relx=0.525, rely=0.225, relwidth=0.2, relheight=0.1)
+        self.ang2=Entry(self.frame_2)
+        self.ang2.place(relx=0.525, rely=0.375, relwidth=0.2, relheight=0.1)
+        self.ang3=Entry(self.frame_2)
+        self.ang3.place(relx=0.525, rely=0.525, relwidth=0.2, relheight=0.1)
     
     def canva(self):
         self.canvas=Canvas(self.frame_3, bg="white", highlightthickness=0)

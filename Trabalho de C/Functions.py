@@ -34,3 +34,12 @@ def calcular_perimetro(lado1, lado2, lado3):
 
     else:
         return "As medidas não formam um triângulo válido."
+def classificar_angulos(a, b, c):
+    if a+b+c != 180:
+        return "A soma dos 3 ângulos deve ser igual a 180°"
+    elif 90 in [a,b,c]:
+        return "Triângulo retângulo"
+    elif  a > 90 or b > 90 or c > 90:
+        return "Obtusângulo"
+    elif a < 90 and b < 90 and c < 90:
+        return "Acutângulo"

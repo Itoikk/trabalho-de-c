@@ -58,6 +58,10 @@ def desenhar_triangulo(entry1, entry2, entry3, canvas, frame_target):
         a = float(entry1.get())
         b = float(entry2.get())
         c = float(entry3.get())
+        if classificar_lados(a, b, c) == "As medidas não formam um triângulo válido." or classificar_lados(a, b, c) == "Os lados devem ser maiores que zero.":
+            lbl = Label(frame_target, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
+            lbl.place(relx=0.5, rely=0.5, anchor='center')
+            return
         canvas.delete("all")
         s=(a + b + c) / 2
         area = (s * (s - a) * (s - b) * (s - c)) ** 0.5

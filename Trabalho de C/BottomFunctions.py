@@ -1,6 +1,7 @@
 from Functions import *
 from tkinter import *
 
+#Classificar lados do triângulo
 def per(entry1, entry2, entry3, target_frame):
     try:
         a = float(entry1.get())
@@ -52,6 +53,28 @@ def classificar_triangulo(entry1, entry2, entry3, target_frame):
     except ValueError:
         lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
+
+def classificar_botão(entry1, entry2, entry3, target_frame):
+    classificar_triangulo(entry1, entry2, entry3, target_frame)
+    area(entry1, entry2, entry3, target_frame)
+    per(entry1, entry2, entry3, target_frame)
+
+
+#Classificar ângulos do triângulo
+def classificar_ângulos(entry1, entry2, entry3, target_frame):
+    try:
+        a=float(entry1.get())
+        b=float(entry2.get())
+        c=float(entry3.get())
+        classificacao=classificar_angulos(a, b, c)
+        lbl = Label(target_frame, text=f"Classificação: {classificacao}", fg="black",
+                    bg="white", font=("Arial", 13))
+        lbl.place(relx=0.1, rely=0.4, anchor='w')
+    except ValueError:
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
+        lbl.place(relx=0.5, rely=0.5, anchor='center')
+
+
 
 def desenhar_triangulo(entry1, entry2, entry3, canvas, frame_target):
     try:

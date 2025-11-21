@@ -8,13 +8,14 @@ def per(entry1, entry2, entry3, target_frame):
         b = float(entry2.get())
         c = float(entry3.get())
         perim = calcular_perimetro(a, b, c)
-        lbl = Label(target_frame, text=f"Perímetro: {perim}", fg="black", bg="white", font=("Arial", 13))
-        lbl.place(relx=0.1, rely=0.2, anchor='w')
+        lbl = Label(target_frame, text=f"Perímetro: {perim}", fg="black", bg="white", font=("Verdana", 13),
+                    wraplength=400, justify=LEFT)
+        lbl.place(relx=0.05, rely=0.45, anchor='w')
     except ValueError:
         for widget in target_frame.winfo_children():
             widget.destroy()
 
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
 
 def area(entry1, entry2, entry3, target_frame):
@@ -24,13 +25,13 @@ def area(entry1, entry2, entry3, target_frame):
         c=float(entry3.get())
         area=calcular_area(a, b, c)
         lbl = Label(target_frame, text=f"Área: {area}", fg="black",
-                    bg="white", font=("Arial", 13))
-        lbl.place(relx=0.1, rely=0.1, anchor='w')
+                    bg="white", font=("Verdana", 13), wraplength=400, justify=LEFT)
+        lbl.place(relx=0.05, rely=0.75, anchor='w')
     except ValueError:
         for widget in target_frame.winfo_children():
             widget.destroy()
 
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
 
 def limpar(frame_target, canvas):
@@ -48,13 +49,16 @@ def classificar_triangulo(entry1, entry2, entry3, target_frame):
         for widget in target_frame.winfo_children():
             if not isinstance(widget, Label):
                 widget.destroy()
-        lbl = Label(target_frame, text=f"Classificação: {classificacao}", fg="black", bg="white", font=("Arial", 13))
-        lbl.place(relx=0.1, rely=0.3, anchor='w')
+        lbl = Label(target_frame, text=f"Classificação com base nos lados: {classificacao}", fg="black", bg="white", font=("Verdana", 13),
+                    wraplength=400, justify=LEFT)
+        lbl.place(relx=0.05, rely=0.15, anchor='w')
     except ValueError:
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
 
 def classificar_botão(entry1, entry2, entry3, target_frame):
+    for widget in target_frame.winfo_children():
+        widget.destroy()
     classificar_triangulo(entry1, entry2, entry3, target_frame)
     area(entry1, entry2, entry3, target_frame)
     per(entry1, entry2, entry3, target_frame)
@@ -66,12 +70,16 @@ def classificar_ângulos(entry1, entry2, entry3, target_frame):
         a=float(entry1.get())
         b=float(entry2.get())
         c=float(entry3.get())
+        for widget in target_frame.winfo_children():
+            widget.destroy()
         classificacao=classificar_angulos(a, b, c)
-        lbl = Label(target_frame, text=f"Classificação: {classificacao}", fg="black",
-                    bg="white", font=("Arial", 13))
-        lbl.place(relx=0.1, rely=0.4, anchor='w')
+        lbl = Label(target_frame, text=f"Classificação com base nos ângulos: {classificacao}", fg="black",
+                    bg="white", font=("Verdana", 13), wraplength=400, justify=LEFT)
+        lbl.place(relx=0.05, rely=0.5, anchor='w')
     except ValueError:
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Arial", 10))
+        for widget in target_frame.winfo_children():
+            widget.destroy()
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
 
 

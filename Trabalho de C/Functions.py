@@ -39,3 +39,39 @@ def classificar_angulos(a, b, c):
         return "Obtusângulo"
     elif a < 90 and b < 90 and c < 90:
         return "Acutângulo"
+
+def classificar_angulos_sla(a, b, c):
+    if not(a + b + c != 180 or a <= 0 or b <= 0 or c <= 0):
+        if a == b == c:
+            return "Triângulo equilátero"
+        elif a == b or b == c or a == c:
+            return "Triângulo isósceles"
+        else:
+            return "Triângulo escaleno"
+    else:
+        return "As medidas não formam um triângulo válido."
+def classificar_angulos_nsei(a, b, c):
+    if a + b + c != 180 or a <= 0 or b <= 0 or c <= 0:
+        return ""
+    if a == 90 or b == 90 or c == 90:
+        return "Triângulo Retângulo"
+    elif a < 90 and b < 90 and c < 90:
+        return "Triângulo Acutângulo"
+    elif a > 90 or b > 90 or c > 90:
+        return "Triangulo Obtuso"
+    else:
+        return "Erro!"
+
+def achar_lados(A, B, C):
+    import math
+    if A <= 0 or B <= 0 or C <= 0 or A + B + C != 180:
+        return "Ângulos inválidos"
+    a = 1
+    k = a / math.sin(math.radians(A))
+    b = k * math.sin(math.radians(B))
+    c = k * math.sin(math.radians(C))
+    M = max(a, b, c)
+    a /= M
+    b /= M
+    c /= M
+    return f"a = {a:.2f} | b = {b:.2f} | c = {c:.2f}"

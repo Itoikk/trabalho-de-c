@@ -47,10 +47,10 @@ class Aplications():
 
 
         #Criação botão calcular área
-        self.bt_classang=Button(self.frame_2, text="Classificar Triângulo -Ângulo-", command=lambda: BottomFunctions.classificar_ângulos(self.ang1, self.ang2, self.ang3, self.frame_01))
+        self.bt_classang=Button(self.frame_2, text="Classificar Triângulo -Ângulo-", command=lambda: BottomFunctions.classificar_botao_ang(self.ang1, self.ang2, self.ang3, self.frame_01))
         self.bt_classang.place(relx=0.60, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão perímetro
-        self.bt_peri=Button(self.frame_2, text="Calcular Perímetro", command=lambda: BottomFunctions.per(self.dad1, self.dad2, self.dad3, self.frame_1))
+        self.bt_peri=Button(self.frame_2, text="Sair", command=lambda: self.janela.destroy())
         self.bt_peri.place(relx=0.40, rely=0.8, relwidth=0.2, relheight=0.15)
         #Criação botão limpar
         self.bt_clear=Button(self.frame_2, text="Limpar", command=lambda: BottomFunctions.limpar([self.frame_1, self.frame_01], self.canvas))

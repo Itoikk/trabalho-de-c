@@ -5,7 +5,7 @@ def per(entry1, entry2, entry3, target_frame):
         a = float(entry1.get())
         b = float(entry2.get())
         c = float(entry3.get())
-        perim = calcular_perimetro(a, b, c)
+        perim = calcular_perimetro_lados(a, b, c)
         lbl = Label(target_frame, text=f"Perímetro: {perim}", fg="black", bg="white", font=("Verdana", 13),
                     wraplength=400, justify=LEFT)
         lbl.place(relx=0.05, rely=0.45, anchor='w')
@@ -20,7 +20,7 @@ def area(entry1, entry2, entry3, target_frame):
         a=float(entry1.get())
         b=float(entry2.get())
         c=float(entry3.get())
-        area=calcular_area(a, b, c)
+        area=calcular_area_lados(a, b, c)
         lbl = Label(target_frame, text=f"Área: {area}", fg="black",
                     bg="white", font=("Verdana", 13), wraplength=400, justify=LEFT)
         lbl.place(relx=0.05, rely=0.75, anchor='w')
@@ -30,18 +30,12 @@ def area(entry1, entry2, entry3, target_frame):
 
         lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
-def limpar(frames_target, canvas):
-    for frame_target in frames_target:
-        for widget in frame_target.winfo_children():
-            if not isinstance(widget, Canvas):
-                widget.destroy()
-        canvas.delete("all")
 def classificar_triangulo(entry1, entry2, entry3, target_frame):
     try:
         a = float(entry1.get())
         b = float(entry2.get())
         c = float(entry3.get()) 
-        classificacao = classificar_lados(a, b, c)
+        classificacao = classificar_lados_lados(a, b, c)
         for widget in target_frame.winfo_children():
             if not isinstance(widget, Label):
                 widget.destroy()
@@ -57,22 +51,66 @@ def classificar_botão(entry1, entry2, entry3, target_frame):
     classificar_triangulo(entry1, entry2, entry3, target_frame)
     area(entry1, entry2, entry3, target_frame)
     per(entry1, entry2, entry3, target_frame)
-def classificar_ângulos(entry1, entry2, entry3, target_frame):
+
+def classificar_lados_ang(entry1, entry2, entry3, target_frame):
     try:
-        a=float(entry1.get())
-        b=float(entry2.get())
-        c=float(entry3.get())
+        a = float(entry1.get())
+        b = float(entry2.get())
+        c = float(entry3.get()) 
+        classificacao = classificar_lados_angulos(a, b, c)
         for widget in target_frame.winfo_children():
-            widget.destroy()
-        classificacao=classificar_angulos(a, b, c)
-        lbl = Label(target_frame, text=f"Classificação com base nos ângulos: {classificacao}", fg="black",
-                    bg="white", font=("Verdana", 13), wraplength=400, justify=LEFT)
-        lbl.place(relx=0.05, rely=0.5, anchor='w')
+            if not isinstance(widget, Label):
+                widget.destroy()
+        lbl = Label(target_frame, text=f"Classificação com base nos ângulos: {classificacao}", fg="black", bg="white", font=("Verdana", 13),
+                    wraplength=400, justify=LEFT)
+        lbl.place(relx=0.05, rely=0.15, anchor='w')
+    except ValueError:
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
+        lbl.place(relx=0.5, rely=0.5, anchor='center')
+def classificar_triangulo_ang(entry1, entry2, entry3, target_frame):
+    try:
+        a = float(entry1.get())
+        b = float(entry2.get())
+        c = float(entry3.get())
+        classificacao = classificar_angulos_angulos(a, b, c)
+        lbl = Label(target_frame, text=f"Classificação por Ângulos: {classificacao}", fg="black", bg="white", font=("Verdana", 13),
+                    wraplength=400, justify=LEFT)
+        lbl.place(relx=0.05, rely=0.45, anchor='w')
     except ValueError:
         for widget in target_frame.winfo_children():
             widget.destroy()
         lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
+def classificar_proporcao_ang(entry1, entry2, entry3, target_frame):
+    try:
+        a = float(entry1.get())
+        b = float(entry2.get())
+        c = float(entry3.get())
+        lados = achar_lados(a, b, c)
+        lbl = Label(target_frame, text=f"Proporção dos lados:\n{lados}", fg="black",
+                bg="white", font=("Verdana", 13), wraplength=400, justify=LEFT)
+        lbl.place(relx=0.05, rely=0.75, anchor='w')
+    except ValueError:
+        for widget in target_frame.winfo_children():
+            widget.destroy()
+        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
+        lbl.place(relx=0.5, rely=0.5, anchor='center')
+def classificar_botao_ang(entry1, entry2, entry3, target_frame):
+    for widget in target_frame.winfo_children():
+        widget.destroy()
+    classificar_lados_ang(entry1, entry2, entry3, target_frame)
+    classificar_triangulo_ang(entry1, entry2, entry3, target_frame)
+    classificar_proporcao_ang(entry1, entry2, entry3, target_frame)
+
+
+
+def limpar(frames_target, canvas):
+    for frame_target in frames_target:
+        for widget in frame_target.winfo_children():
+            if not isinstance(widget, Canvas):
+                widget.destroy()
+        canvas.delete("all")
+
 def desenhar_triangulo(entry_l1, entry_l2, entry_l3,
                        entry_a1, entry_a2, entry_a3,
                        canvas, frame_target):
@@ -141,55 +179,3 @@ def desenhar_triangulo(entry_l1, entry_l2, entry_l3,
         lbl = Label(frame_target, text="Entrada inválida",
                     fg="red", bg="white", font=("Arial", 10))
         lbl.place(relx=0.5, rely=0.5, anchor='center')
-
-def classificar_triangulo_ang(entry1, entry2, entry3, target_frame):
-    try:
-        a = float(entry1.get())
-        b = float(entry2.get())
-        c = float(entry3.get()) 
-        classificacao = classificar_angulos_sla(a, b, c)
-        for widget in target_frame.winfo_children():
-            if not isinstance(widget, Label):
-                widget.destroy()
-        lbl = Label(target_frame, text=f"Classificação com base nos ângulos: {classificacao}", fg="black", bg="white", font=("Verdana", 13),
-                    wraplength=400, justify=LEFT)
-        lbl.place(relx=0.05, rely=0.15, anchor='w')
-    except ValueError:
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
-        lbl.place(relx=0.5, rely=0.5, anchor='center')
-    
-def classificar_triangulo_ang2(entry1, entry2, entry3, target_frame):
-    try:
-        a = float(entry1.get())
-        b = float(entry2.get())
-        c = float(entry3.get())
-        classificacao = classificar_angulos_nsei(a, b, c)
-        lbl = Label(target_frame, text=f"Classificação por Ângulos: {classificacao}", fg="black", bg="white", font=("Verdana", 13),
-                    wraplength=400, justify=LEFT)
-        lbl.place(relx=0.05, rely=0.45, anchor='w')
-    except ValueError:
-        for widget in target_frame.winfo_children():
-            widget.destroy()
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
-        lbl.place(relx=0.5, rely=0.5, anchor='center')
-
-def classificar_lados_ang(entry1, entry2, entry3, target_frame):
-    try:
-        a = float(entry1.get())
-        b = float(entry2.get())
-        c = float(entry3.get())
-        lados = achar_lados(a, b, c)
-        lbl = Label(target_frame, text=f"Proporção dos lados:\n{lados}", fg="black",
-                bg="white", font=("Verdana", 13), wraplength=400, justify=LEFT)
-        lbl.place(relx=0.05, rely=0.75, anchor='w')
-    except ValueError:
-        for widget in target_frame.winfo_children():
-            widget.destroy()
-        lbl = Label(target_frame, text="Entrada inválida", fg="red", bg="white", font=("Verdana", 10))
-        lbl.place(relx=0.5, rely=0.5, anchor='center')
-def classificar_botao_ang(entry1, entry2, entry3, target_frame):
-    for widget in target_frame.winfo_children():
-        widget.destroy()
-    classificar_triangulo_ang(entry1, entry2, entry3, target_frame)
-    classificar_triangulo_ang2(entry1, entry2, entry3, target_frame)
-    classificar_lados_ang(entry1, entry2, entry3, target_frame)
